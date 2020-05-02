@@ -8,7 +8,7 @@ namespace D_1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("\n\nEncrypted Text: " + EncryptionClass.Encrypt(RandomString(32),"Iorann est pas bo"));
+            Console.WriteLine("\n\nEncrypted Text: " + EncryptionClass.Encrypt(RandomString(32),"Plain Text"));
             Console.ReadKey();
         }
         private static Random random = new Random();
