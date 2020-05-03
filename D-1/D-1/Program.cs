@@ -1,6 +1,8 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace D_1
 {
@@ -8,16 +10,8 @@ namespace D_1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("\n\nEncrypted Text: " + EncryptionClass.Encrypt(RandomString(32),"Plain Text"));
+            Console.WriteLine("\n\nEncrypted Text: " + EncryptionClass.Encrypt("key", "Test here plain text"));
             Console.ReadKey();
         }
-        private static Random random = new Random();
-        public static string RandomString(int length)
-        {
-            const string chars = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/\@àçéè*-+=_#$£%ùµ§!:.;?,";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
-
     }
 }
