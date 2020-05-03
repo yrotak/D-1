@@ -1,0 +1,7 @@
+C:\Users\alyst\source\repos\D-1\D-1\bin\Debug\D-1.exe.config
+C:\Users\alyst\source\repos\D-1\D-1\bin\Debug\D-1.exe
+C:\Users\alyst\source\repos\D-1\D-1\bin\Debug\D-1.pdb
+C:\Users\alyst\source\repos\D-1\D-1\obj\Debug\D-1.csprojAssemblyReference.cache
+C:\Users\alyst\source\repos\D-1\D-1\obj\Debug\D-1.csproj.CoreCompileInputs.cache
+C:\Users\alyst\source\repos\D-1\D-1\obj\Debug\D-1.exe
+C:\Users\alyst\source\repos\D-1\D-1\obj\Debug\D-1.pdb
