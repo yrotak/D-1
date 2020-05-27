@@ -8,8 +8,10 @@ namespace D_1
     class EncryptionClass
     {
         public static string finalEncrypted;
+        public static string finalDecrypted;
         public static string Encrypt(string key, string plain)
         {
+            finalEncrypted = "";
             string result = "";
             while(true)
             { 
@@ -50,7 +52,14 @@ namespace D_1
                     key = keyFormating(key);
                     string[] alphabetArray =
                     {
-                        createAlphabet(key[0]),createAlphabet(key[1]),createAlphabet(key[2]),createAlphabet(key[3]),createAlphabet(key[4]),createAlphabet(key[5]),createAlphabet(key[6]),createAlphabet(key[7]),createAlphabet(key[8]),createAlphabet(key[9]),createAlphabet(key[10]),createAlphabet(key[11]),createAlphabet(key[12]),createAlphabet(key[13]),createAlphabet(key[14]),createAlphabet(key[15]),createAlphabet(key[16]),createAlphabet(key[17]),createAlphabet(key[18]),createAlphabet(key[19]),createAlphabet(key[20]),createAlphabet(key[21]),createAlphabet(key[22]),createAlphabet(key[23]),createAlphabet(key[24]),createAlphabet(key[25]),createAlphabet(key[26]),createAlphabet(key[27]),createAlphabet(key[28]),createAlphabet(key[29]),createAlphabet(key[30]),createAlphabet(key[31])
+                        createAlphabet(key[0]), createAlphabet(key[1]), createAlphabet(key[2]), createAlphabet(key[3]),
+                        createAlphabet(key[4]), createAlphabet(key[5]), createAlphabet(key[6]), createAlphabet(key[7]),
+                        createAlphabet(key[8]), createAlphabet(key[9]), createAlphabet(key[10]),createAlphabet(key[11]),
+                        createAlphabet(key[12]),createAlphabet(key[13]),createAlphabet(key[14]),createAlphabet(key[15]),
+                        createAlphabet(key[16]),createAlphabet(key[17]),createAlphabet(key[18]),createAlphabet(key[19]),
+                        createAlphabet(key[20]),createAlphabet(key[21]),createAlphabet(key[22]),createAlphabet(key[23]),
+                        createAlphabet(key[24]),createAlphabet(key[25]),createAlphabet(key[26]),createAlphabet(key[27]),
+                        createAlphabet(key[28]),createAlphabet(key[29]),createAlphabet(key[30]),createAlphabet(key[31])
                     };
                     int o = 0;
                     for (int i = 0; i < plain.Length; i++)
@@ -84,6 +93,101 @@ namespace D_1
             }
             return result;
         }
+        public static string Decrypt(string key, string encrypted)
+        {
+            finalDecrypted = "";
+            string result = "";
+            while (true)
+            {
+                if (key.Length == 32)
+                {
+                    string[] alphabetArray =
+                    {
+                        createAlphabet(key[0]), createAlphabet(key[1]), createAlphabet(key[2]), createAlphabet(key[3]),
+                        createAlphabet(key[4]), createAlphabet(key[5]), createAlphabet(key[6]), createAlphabet(key[7]),
+                        createAlphabet(key[8]), createAlphabet(key[9]), createAlphabet(key[10]),createAlphabet(key[11]),
+                        createAlphabet(key[12]),createAlphabet(key[13]),createAlphabet(key[14]),createAlphabet(key[15]),
+                        createAlphabet(key[16]),createAlphabet(key[17]),createAlphabet(key[18]),createAlphabet(key[19]),
+                        createAlphabet(key[20]),createAlphabet(key[21]),createAlphabet(key[22]),createAlphabet(key[23]),
+                        createAlphabet(key[24]),createAlphabet(key[25]),createAlphabet(key[26]),createAlphabet(key[27]),
+                        createAlphabet(key[28]),createAlphabet(key[29]),createAlphabet(key[30]),createAlphabet(key[31])
+                    };
+                    int o = 0;
+                    for (int i = 0; i < encrypted.Length; i++)
+                    {
+                        o++;
+                        char c = encrypted[i];
+                        string alphabetBase = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                        int at = alphabetArray[i].IndexOf(c, 0, 61);
+                        string alphabetused;
+                        if (i > 31)
+                        {
+                            o = 0;
+                            alphabetused = alphabetArray[o];
+                        }
+                        else
+                        {
+                            alphabetused = alphabetArray[i];
+                        }
+                        if (c == '%')
+                        {
+                            finalDecrypted = finalDecrypted + " ";
+                        }
+                        else
+                        {
+                            finalDecrypted = finalDecrypted + alphabetused[at];
+                        }
+                    }
+                    result = finalDecrypted;
+                    break;
+                }
+                else
+                {
+                    key = keyFormating(key);
+                    string[] alphabetArray =
+                    {
+                        createAlphabet(key[0]), createAlphabet(key[1]), createAlphabet(key[2]), createAlphabet(key[3]),
+                        createAlphabet(key[4]), createAlphabet(key[5]), createAlphabet(key[6]), createAlphabet(key[7]),
+                        createAlphabet(key[8]), createAlphabet(key[9]), createAlphabet(key[10]),createAlphabet(key[11]),
+                        createAlphabet(key[12]),createAlphabet(key[13]),createAlphabet(key[14]),createAlphabet(key[15]),
+                        createAlphabet(key[16]),createAlphabet(key[17]),createAlphabet(key[18]),createAlphabet(key[19]),
+                        createAlphabet(key[20]),createAlphabet(key[21]),createAlphabet(key[22]),createAlphabet(key[23]),
+                        createAlphabet(key[24]),createAlphabet(key[25]),createAlphabet(key[26]),createAlphabet(key[27]),
+                        createAlphabet(key[28]),createAlphabet(key[29]),createAlphabet(key[30]),createAlphabet(key[31])
+                    };
+                    int o = 0;
+                    for (int i = 0; i < encrypted.Length; i++)
+                    {
+                        o++;
+                        char c = encrypted[i];
+                        string alphabetBase = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                        string alphabetused;
+                        if (i > 31)
+                        {
+                            o = 0;
+                            alphabetused = alphabetArray[o];
+                        }
+                        else
+                        {
+                            alphabetused = alphabetArray[i];
+                        }
+                        int at = alphabetused.IndexOf(c, 0, 61);
+                        if (c == '%')
+                        {
+                            finalDecrypted = finalDecrypted + " ";
+                        }
+                        else
+                        {
+                            finalDecrypted = finalDecrypted + alphabetBase[at];
+                        }
+                    }
+                    result = finalDecrypted;
+                    break;
+                }
+            }
+            return result;
+        }
+
         public static string createAlphabet(char key)
         {
             string alphabetBase = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
