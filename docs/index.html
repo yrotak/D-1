@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./DOne.js"></script>
+</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DrayNeur/nice-component@main/build/nice-components.css">
+
+<style>
+    * {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        font-family: 'Open sans MS', sans-serif;
+    }
+
+    .container {
+        width: 100%;
+        height: 100vh;
+        background-color: #131313;
+    }
+
+    #form {
+        background-color: #232323;
+        width: 300px;
+        padding: 15px;
+        border-radius: 4px;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+
+    .input {
+        display: block;
+        background: #333333;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .check {
+        display: flex;
+        justify-content: center;
+    }
+
+    .box {
+        margin: 5px;
+    }
+
+    #submit {
+        transform: translateX(-50%);
+        position: relative;
+        left: 50%;
+    }
+
+    #result {
+        word-wrap: break-word;
+        margin-top: 15px;
+    }
+
+    textarea {
+        resize: vertical;
+        max-height: 600px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <form id="form">
+            <label for="data">Data</label>
+            <textarea class="input" type="text" id="data" placeholder="data"></textarea>
+            <label for="key">Key</label>
+            <input class="input" type="text" id="key" placeholder="key">
+
+            <div class="check">
+                <div class="box">
+                    <label for="encrypt-check">Encrypt</label>
+                    <input type="checkbox" id="encrypt-check" checked>
+                </div>
+                <div class="box">
+                    <label for="decrypt-check">Decrypt</label>
+                    <input type="checkbox" id="decrypt-check">
+                </div>
+            </div>
+
+            <input type="button" class="btn btn-blue" id="submit" value="Encrypt">
+            <p id="result">Result: <span id="full-result"></span></p>
+        </form>
+    </div>
+</body>
+<script>
+    document.getElementById("encrypt-check").addEventListener('change', (e) => {
+        document.getElementById("decrypt-check").checked = false;
+        document.getElementById("submit").value = "Encrypt";
+    })
+    document.getElementById("decrypt-check").addEventListener('change', (e) => {
+        document.getElementById("encrypt-check").checked = false;
+        document.getElementById("submit").value = "Decrypt";
+    })
+    document.getElementById("submit").addEventListener("click", (e) => {
+        try {
+            document.getElementById("full-result").style.color = "green";
+            if (document.getElementById("encrypt-check").checked) {
+                document.getElementById("full-result").textContent = DOne.encrypt(document.getElementById("key").value, str2Arr(document.getElementById("data").value));
+            } else {
+                document.getElementById("full-result").textContent = DOne.decrypt(document.getElementById("key").value, document.getElementById("data").value);
+            }
+        } catch (e) {
+            document.getElementById("full-result").style.color = "red";
+            document.getElementById("full-result").textContent = e.toString();
+        }
+        e.preventDefault();
+    })
+</script>
+
+</html>
